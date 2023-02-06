@@ -58,17 +58,24 @@ class sms:
       }
       db = table("sms_outbox_hostpins") # Initialize Table 
       smsUnits = len(sendBody["msg"]) / int(config('smsLength'))
+      
+      response = self.submit_request(EndPoints('HPSMS.HP_SENDSMS'),postData)
+      response  = json.loads(response.text)
       msgItem = {
           'short_code' : self.HPSenderID,
           'phone' : sendBody["phoneNo"],
           'message' : sendBody["msg"],
           'msgid' :  msgId,
           'sms_length' : len(sendBody["msg"]),
-          'sms_units'  : math.ceil(smsUnits)
+          'sms_units'  : math.ceil(smsUnits),
+          'transactionId'  : response["transactionId"],
+          'send_status'  : response["status"],
+          'statusCode'  : response["statusCode"],
+          'reason'  : response["reason"],
+          'response_message'  : response["reason"]
       }
       db.create(msgItem)
-      response = self.submit_request(EndPoints('HPSMS.HP_SENDSMS'),postData)
-      return response.text
+      return response
   
 # This function is called to Get the Current Time
 def now():
