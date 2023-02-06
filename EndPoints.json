@@ -1,0 +1,7 @@
+{
+    "HPSMS" : {
+        "HP_SENDSMS" : "https://smsportal.hostpinnacle.co.ke/SMSApi/send",
+        "HP_ACCOUNTSTATUS" : "https://smsportal.hostpinnacle.co.ke/SMSApi/account/readstatus",
+        "HP_MSGSTATUS" : "https://smsportal.hostpinnacle.co.ke/SMSApi/report/status"
+    }
+}
