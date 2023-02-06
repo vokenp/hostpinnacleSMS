@@ -3,27 +3,28 @@
 </p>
 <p align="center">
 </p>
-## Prequisets 
+##Prequisets 
 * pip install pymysql
 * pip install python-decouple
 * pip install requests
 
 
 ##Create a .env File and Add the Following
-* DB_CONNECTION=mysql
-* DB_HOST=localhost
-* DB_DATABASE=hostpinsms
-* DB_USERNAME=root
-* DB_PASSWORD=???
+<pre>
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_DATABASE=hostpinsms
+DB_USERNAME=root
+DB_PASSWORD=???
 
-* HPApiKey = ??
-* HPUserID = ??
-* HPPassword = ??
-* HPSenderID = HPKSMS
-* smsLength = 160
+HPApiKey = ??
+HPUserID = ??
+HPPassword = ??
+HPSenderID = HPKSMS
+smsLength = 160
+</pre>
 
-##Create a .env File and Add the Following
-*Run the following Create Table Scripts in your Database
+##Run the following Create Table Scripts in your Database
 <pre>
 DROP TABLE IF EXISTS `sms_outbox_hostpins`;
 CREATE TABLE `sms_outbox_hostpins` (
@@ -50,4 +51,5 @@ CREATE TABLE `sms_outbox_hostpins` (
   UNIQUE KEY `msgid` (`msgid`)
 ) ;
 </pre>
+
 ##Run the main.py
